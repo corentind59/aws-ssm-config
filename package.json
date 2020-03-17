@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.641.0",
+    "aws-xray-sdk-core": "^2.5.0"
   }
 }
