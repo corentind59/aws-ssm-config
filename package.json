@@ -1,0 +1,14 @@
+{
+  "name": "@corentind/aws-ssm-config",
+  "version": "1.0.0",
+  "description": "Fetch your configuration from AWS SSM Parameter store easily",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
