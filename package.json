@@ -1,10 +1,11 @@
 {
   "name": "@corentind/aws-ssm-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch your configuration from AWS SSM Parameter store easily",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc"

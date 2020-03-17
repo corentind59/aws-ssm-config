@@ -92,7 +92,10 @@ yarn
 
 ## Release History
 
-* 0.1.0
+* 0.1.2
+    * Fixed .npmignore
+    * Updated NPM badges
+* 0.1.1
     * Added SSMClientConfig
     * Allows to retrieve one parameter at a time by key
     * Allows on-fly decryption
@@ -113,6 +116,6 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@corentind/aws-ssm-config.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@corentind/aws-ssm-config
+[npm-downloads]: https://img.shields.io/npm/dm/@corentind/aws-ssm-config.svg?style=flat-square
