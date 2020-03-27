@@ -6,7 +6,7 @@ import { SSMConfigClientInitOptions } from './SSMConfigClientInitOptions';
 /**
  * Client used to interact with AWS SSM Parameter Store.
  */
-export class SSMConfigClient {
+export class SSMConfigClient<T> {
     /**
      * AWS SSM client from aws-sdk module
      */
@@ -26,13 +26,13 @@ export class SSMConfigClient {
      * @param key the key that will be appended to the base path.
      * @param options Can be used to override global options provided in the constructor.
      */
-    public async getByKey(key: string, options?: SSMConfigClientOptions) {
+    public async getByKey<K extends keyof T>(key: K, options?: SSMConfigClientOptions): Promise<T[K]> {
         const basePath = options?.basePath ?? this.options.basePath;
         const withDecryption = options?.withDecryption ?? this.options.withDecryption ?? false;
         const params = await this.ssm.getParametersByPath({
             Path: basePath,
             WithDecryption: withDecryption
         }).promise();
-        return params.Parameters!.find(({Name}) => Name === key);
+        return params.Parameters!.find(({Name}) => Name === key) as T[K];
     }
 }
