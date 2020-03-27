@@ -1,6 +1,7 @@
 import { SSM } from 'aws-sdk';
 import { SSMConfigClientOptions } from './SSMConfigClientOptions';
 import { createSSM } from './SSM';
+import { SSMConfigClientInitOptions } from './SSMConfigClientInitOptions';
 
 /**
  * Client used to interact with AWS SSM Parameter Store.
@@ -16,7 +17,7 @@ export class SSMConfigClient {
      * @param options global options for the client. Each options can be overridden by the individual class' methods'
      * options parameter.
      */
-    constructor(private options: SSMConfigClientOptions) {
+    constructor(private options: SSMConfigClientInitOptions) {
         this.ssm = createSSM(options.capture ?? false);
     }
 
