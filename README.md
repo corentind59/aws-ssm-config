@@ -6,7 +6,7 @@
 
 This package comes from a refactoring problem that I had during a personal project.
 Basically, I stored by configuration on AWS SSM Parameter Store and wanted to retrieve it
-in a simple, sexy and efficient way. So I made a simple package that I could reuse to
+in a simple and efficient way. So I made a simple package that I could reuse to
 make it easy and BOOM ! Here is **aws-ssm-config** ! 
 
 ## Installation
@@ -71,7 +71,6 @@ const client = new SSMConfigClient({
 ```js
 import { SSMConfigClient } from '@corentind/aws-ssm-config';
 
-// By specifying the `capture` option, all API calls will be captured by XRay.
 const client = new SSMConfigClient({
   basePath: '/myproject/api/prod'
 });
@@ -83,7 +82,7 @@ client.getByKey('common-prop', { basePath: '/myproject/common/prod' })
 
 ## Development setup
 
-The project was created and built with Yarn, so please it too for development.
+The project was created and built with Yarn, so please use it too for development.
 Install dependencies :
 
 ```sh
