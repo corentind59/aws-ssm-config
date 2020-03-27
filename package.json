@@ -1,6 +1,6 @@
 {
   "name": "@corentind/aws-ssm-config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Fetch your configuration from AWS SSM Parameter store easily",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
