@@ -6,7 +6,7 @@
 
 This package comes from a refactoring problem that I had during a personal project.
 Basically, I stored by configuration on AWS SSM Parameter Store and wanted to retrieve it
-in a simple and efficient way. So I made a simple package that I could reuse to
+in a simple, type-safe and efficient way. So I made a simple package that I could reuse to
 make it easy and BOOM ! Here is **aws-ssm-config** ! 
 
 ## Installation
@@ -80,6 +80,48 @@ client.getByKey('common-prop', { basePath: '/myproject/common/prod' })
   .catch(error => console.error('Something went wrong : ', error));
 ```
 
+### Default configuration
+
+```js
+import { SSMConfigClient } from '@corentind/aws-ssm-config';
+
+// By providing a `config` object property, it will use the provided object instead of
+// querying the SSM Parameter Store.
+const client = new SSMConfigClient({
+  basePath: '/myproject/api/prod',
+  ...(process.env.NODE_ENV === 'local' && {
+    config: {
+      someServiceEndpoint: 'http://localhost:3030'    
+    }
+  })
+});
+
+client.getByKey('someServiceEndpoint')
+  .then(serviceEndpoint => /* `http://localhost:3030`... */)
+  .catch(error => console.error('Something went wrong : ', error));
+```
+
+### Typescript support
+
+```typescript
+import { SSMConfigClient } from '@corentind/aws-ssm-config';
+
+// First, create a type for your configuration
+interface MyConfig {
+  someIntProperty: number;
+}
+
+// Then, create a client and provide the interface type parameter.
+const client = new SSMConfigClient<MyConfig>({
+  basePath: '/myproject/api/prod'
+});
+
+// You can now retrieve parameters in a type-safe fashion.
+client.getByKey('someIntProperty')
+  .then(anInt => /* anInt.toExponential() */)
+  .catch(error => console.error('Something went wrong : ', error));
+```
+
 ## Development setup
 
 The project was created and built with Yarn, so please use it too for development.
@@ -91,6 +133,11 @@ yarn
 
 ## Release History
 
+* 0.2.0
+    * Added type-safe client
+    * Added default configuration support
+    * Removed capture parameter overrides
+    * Updated documentation
 * 0.1.2
     * Fixed .npmignore
     * Updated NPM badges
