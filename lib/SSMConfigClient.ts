@@ -46,7 +46,7 @@ export class SSMConfigClient<T> {
             Path: basePath,
             WithDecryption: withDecryption
         }).promise();
-        return params.Parameters!.find(({Name}) => Name === key) as T[K];
+        return params.Parameters!.find(({ Name }) => Name?.replace(new RegExp(`${basePath}\/?`), '') === key) as T[K];
     }
 
     /**
